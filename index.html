@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiba Fathima | Web Developer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lora:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --honey-gold: #F7D488;
+            --latte-beige: #F5E8D2;
+            --warm-mocha: #B97A56;
+            --cocoa-brown: #5E4B3C;
+            --soft-cream: #FBF9F4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--soft-cream);
+            color: var(--cocoa-brown);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Image Spaces - ADD YOUR IMAGE URLs HERE */
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+            background-image: url('WhatsApp\ Image\ 2025-07-24\ at\ 00.01.20_58d27ec9.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        #about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.8;
+             background-image: url('WhatsApp\ Image\ 2025-07-24\ at\ 00.01.08_8bbeff56.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        #skills::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+             background-image: url('WhatsApp\ Image\ 2025-07-24\ at\ 00.01.47_54cad74f.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+             background-image: url('WhatsApp\ Image\ 2025-07-24\ at\ 00.01.57_b2b43829.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(251, 249, 244, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(94, 75, 60, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, var(--warm-mocha), var(--cocoa-brown));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .logo:hover {
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(185, 122, 86, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(185, 122, 86, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: rgba(185, 122, 86, 0.15);
+            font-weight: 500;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 2px;
+            margin: 5px auto;
+            background-color: var(--cocoa-brown);
+            transition: all 0.3s ease;
+        }
+
+        /* Home Section */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .home-content {
+            max-width: 800px;
+        }
+
+        #home h1 {
+            font-size: 3.2rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        /* Creative "Hiba" Animation */
+        .name-highlight {
+            display: inline-block;
+            position: relative;
+            color: var(--warm-mocha);
+        }
+
+        .name-highlight::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: var(--honey-gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .name-highlight:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        #home p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            font-weight: 400;
+            color: var(--warm-mocha);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--warm-mocha);
+            color: var(--soft-cream);
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--cocoa-brown);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(94, 75, 60, 0.1);
+        }
+
+        /* About Section */
+        #about {
+            background-color: rgba(245, 232, 210, 0.7);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background-color: var(--honey-gold);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-text {
+            max-width: 800px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-text p:first-child::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--warm-mocha);
+            float: left;
+            line-height: 0.8;
+            margin-right: 8px;
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: rgba(251, 249, 244, 0.7);
+            padding-bottom: 150px; /* Extra space for tooltips */
+        }
+
+        .tap-prompt {
+            text-align: center;
+            margin: -20px 0 30px;
+            font-style: italic;
+            color: var(--warm-mocha);
+            opacity: 0;
+            transition: opacity 1s ease;
+            font-size: 1.1rem;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 50px 30px; /* Increased vertical gap */
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(94, 75, 60, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: visible; /* Changed from hidden */
+            cursor: pointer;
+            margin-top: 30px; /* Space for tooltip */
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--honey-gold), var(--warm-mocha));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 15px 30px rgba(94, 75, 60, 0.1);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin: 10px 0 20px;
+            transition: all 0.3s ease;
+            color: var(--warm-mocha);
+            animation: pulse 2s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skill-card:hover .skill-icon {
+            animation: none;
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .skill-card h3 {
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Language Progress Bars */
+        .language-bar {
+            height: 8px;
+            background: var(--latte-beige);
+            border-radius: 10px;
+            margin: 25px 0 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .language-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--honey-gold), var(--warm-mocha));
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+
+        /* Tooltip Styling - UPDATED POSITIONING */
+        .tooltip {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(94, 75, 60, 0.15);
+            width: calc(100% - 40px);
+            max-width: 280px;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-align: center;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: white transparent transparent;
+        }
+
+        .skill-card.active .tooltip {
+            opacity: 1;
+            visibility: visible;
+            top: -90px;
+        }
+
+        .tooltip h4 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--cocoa-brown);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .tooltip p {
+            font-size: 0.9rem;
+            color: var(--warm-mocha);
+            line-height: 1.6;
+        }
+
+        /* Pulse animation for icons */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: rgba(245, 232, 210, 0.7);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--latte-beige);
+            border-radius: 5px;
+            background-color: var(--soft-cream);
+            font-family: 'Lora', serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--warm-mocha);
+            box-shadow: 0 0 0 2px rgba(185, 122, 86, 0.2);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--cocoa-brown);
+            color: var(--soft-cream);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--warm-mocha);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(94, 75, 60, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--cocoa-brown);
+            color: var(--latte-beige);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+            
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                gap: 0;
+                flex-direction: column;
+                background-color: var(--soft-cream);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(94, 75, 60, 0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            #home h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+
+            #skills {
+                padding-bottom: 120px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 40px 20px;
+            }
+
+            .tooltip {
+                width: 180px;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -70px;
+            }
+
+            .skill-card.active .tooltip {
+                top: -80px;
+            }
+
+            .tap-prompt {
+                font-size: 1rem;
+                margin: -10px 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .skill-card {
+                margin-top: 40px;
+            }
+
+            .tooltip {
+                width: 160px;
+                top: -60px;
+            }
+
+            .skill-card.active .tooltip {
+                top: -70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Hiba</a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="home-content fade-in">
+                <h1>Hello, I'm <span class="name-highlight">Hiba Fathima</span><br>Web Developer & Creative Thinker</h1>
+                <p>Turning ideas into elegant digital experiences. Currently mastering the art of code and design.</p>
+                <a href="#about" class="btn">Discover My Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>I'm Hiba Fathima, a BCA student passionate about web development. My journey began with a curiosity for how things work behind the screens, which led me to dive into coding languages and design principles.</p>
+                    <p>Currently, I'm honing my skills in front-end development while exploring the creative possibilities of UI/UX design. I believe great websites should be both functional and emotionally resonant—like a well-written poem that also solves a problem.</p>
+                    <p>When I'm not debugging code, you'll find me exploring new frameworks, sketching interface ideas, or enjoying a cup of chai while planning my next project.</p>
+                    <a href="#skills" class="btn" style="margin-top: 30px;">Explore My Skills</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">My Tech Toolkit</h2>
+            <p class="tap-prompt fade-in">↓ Tap any icon to learn more ↓</p>
+            
+            <div class="skills-container">
+                <!-- Python Card -->
+                <div class="skill-card fade-in" onclick="toggleTooltip(this)">
+                    <div class="tooltip">
+                        <h4>Python</h4>
+                        <p>My go-to for data analysis and backend logic. Experienced with Flask and Django frameworks.</p>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- Java Card -->
+                <div class="skill-card fade-in" onclick="toggleTooltip(this)">
+                    <div class="tooltip">
+                        <h4>Java</h4>
+                        <p>Strong OOP fundamentals. Built several console applications and Android prototypes.</p>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h3>Java</h3>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <!-- SQL Card -->
+                <div class="skill-card fade-in" onclick="toggleTooltip(this)">
+                    <div class="tooltip">
+                        <h4>SQL</h4>
+                        <p>Designing efficient databases with MySQL and PostgreSQL. Comfortable with complex queries.</p>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>SQL</h3>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <!-- HTML/CSS Card -->
+                <div class="skill-card fade-in" onclick="toggleTooltip(this)">
+                    <div class="tooltip">
+                        <h4>HTML5 & CSS3</h4>
+                        <p>Semantic markup and responsive design specialist. Love creating fluid layouts.</p>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3>HTML/CSS</h3>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <!-- JavaScript Card -->
+                <div class="skill-card fade-in" onclick="toggleTooltip(this)">
+                    <div class="tooltip">
+                        <h4>JavaScript</h4>
+                        <p>Building interactive UIs with vanilla JS. Currently learning React framework.</p>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <!-- UI/UX Card -->
+                <div class="skill-card fade-in" onclick="toggleTooltip(this)">
+                    <div class="tooltip">
+                        <h4>UI/UX Design</h4>
+                        <p>Focused on creating intuitive user flows with Figma and Adobe XD.</p>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>UI/UX</h3>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 65%"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#contact" class="btn">Let's Collaborate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <form class="contact-form fade-in" id="whatsappForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send via WhatsApp</button>
+            </form>
+            <div style="text-align: center; margin-top: 20px;">
+                <p>Or connect with me directly:</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://wa.me/YOUR_WHATSAPP_NUMBER_HERE" style="color: var(--warm-mocha); font-size: 1.2rem;" target="_blank">
+                        <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hiba Fathima. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('.nav-links li a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+        
+            navLi.forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href').includes(current)) {
+                    li.classList.add('active');
+                }
+            });
+        });
+        
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+        
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+        
+        // Animate progress bars when skills section is visible
+        const progressBars = document.querySelectorAll('.language-progress');
+        const skillsSection = document.querySelector('#skills');
+        
+        const animateProgressBars = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                    animateProgressBars.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        animateProgressBars.observe(skillsSection);
+        
+        // Show tap prompt when skills section is visible
+        const tapPrompt = document.querySelector('.tap-prompt');
+        const promptObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        tapPrompt.style.opacity = '1';
+                    }, 500);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        promptObserver.observe(skillsSection);
+        
+        // Tooltip Functionality
+        function toggleTooltip(card) {
+            // Close all other tooltips first
+            document.querySelectorAll('.skill-card').forEach(item => {
+                if (item !== card) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current card
+            card.classList.toggle('active');
+            
+            // Hide prompt after first interaction
+            tapPrompt.style.opacity = '0';
+        }
+
+        // Close tooltips when clicking elsewhere
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.skill-card')) {
+                document.querySelectorAll('.skill-card').forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+        
+        // WhatsApp Form Submission
+        const whatsappForm = document.getElementById('whatsappForm');
+        
+        whatsappForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Replace YOUR_WHATSAPP_NUMBER_HERE with your actual WhatsApp number in international format
+            // Example: 911234567890 (for India)
+            const phoneNumber = "8848205982";
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Create the WhatsApp message
+            const whatsappMessage = `New Message from Portfolio Website:%0A%0AName: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+            
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/${phoneNumber}?text=${whatsappMessage}`, '_blank');
+            
+            // Reset the form
+            whatsappForm.reset();
+            
+            // Show confirmation (optional)
+            alert('Thank you! Your message is being opened in WhatsApp.');
+        });
+    </script>
+</body>
+</html>
